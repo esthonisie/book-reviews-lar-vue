@@ -1,6 +1,12 @@
 <script setup>
+import { fetchBooks, getAllBooks } from './store'
+
+fetchBooks();
+const showBooks = getAllBooks;
 </script>
 
 <template>
-  <h1>Hallo Daar!</h1>
+  <ul v-for="(book) in showBooks">
+    <li>{{ book.title }}</li>
+  </ul>
 </template>
