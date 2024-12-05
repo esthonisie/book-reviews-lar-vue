@@ -3,9 +3,10 @@
 // use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\AuthorController;
 
-/* Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum'); */
-
+// Books
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
+
+// Authors
+Route::get('/authors', [AuthorController::class, 'index'])->name('authors.index');

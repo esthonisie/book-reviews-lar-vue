@@ -1,13 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../domains/books/views/HomeView.vue'
+import bookRoutes from '../domains/books'
+import authorRoutes from '../domains/authors'
 
-const routes = [
-	{ 
-    path: '/',
-    name: 'home', 
-    component: HomeView 
-  },
-];
+const baseRoutes = [];
+const routes = baseRoutes.concat(bookRoutes, authorRoutes);
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
