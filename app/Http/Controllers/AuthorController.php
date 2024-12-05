@@ -2,23 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
+use App\Models\Author;
 use Illuminate\Http\Request;
-use App\Http\Resources\BookResource;
+use App\Http\Resources\AuthorResource;
 
-class BookController extends Controller
+class AuthorController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $books = Book::all();
-        return BookResource::collection($books)
-            ->sortBy('author.last_name')
-            ->values()
-            ->all()
-        ;
+        $authors = Author::all();
+        return AuthorResource::collection($authors);
     }
 
     /**
