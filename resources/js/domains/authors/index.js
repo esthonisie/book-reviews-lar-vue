@@ -1,9 +1,9 @@
-import HomeView from './views/HomeView.vue'
+import IndexView from './views/IndexView.vue'
 
 const routes = [
   { 
     path: '/authors', 
-    component: HomeView 
+    component: IndexView 
   },
 ];
 

@@ -2,23 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Review;
+use App\Models\Book;
 use Illuminate\Http\Request;
-use App\Http\Resources\ReviewResource;
+use App\Http\Resources\BookReviewResource;
 
 class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Book $book)
     {
-        $reviews = Review::all();
-        return ReviewResource::collection($reviews)
-            ->sortBy('title')
-            ->values()
-            ->all()
-        ;
+        return new BookReviewResource($book);
     }
 
     /**

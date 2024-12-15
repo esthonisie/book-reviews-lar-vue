@@ -7,7 +7,7 @@ const showAuthors = getAllAuthors;
 
 <template>
   <ul v-for="author in showAuthors">
-    <li><strong>{{ author.first_name + ' ' + author.last_name}}</strong></li>
+    <li><strong>{{ author.name }}</strong></li>
     <ul v-for="book in author.books">
       <li>{{ book.title }}</li>
     </ul>

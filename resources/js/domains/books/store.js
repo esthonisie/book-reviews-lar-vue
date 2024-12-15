@@ -4,11 +4,11 @@ import axios from 'axios'
 // state
 const books = ref([]);
 
-// De functie die de aanvraag met Axios naar de backend stuurt
+// Axios
 export const fetchBooks = async () => {
-    const {data} = await axios.get('api/books');
-    if (!data) return;
-    books.value = data;
+	const {data} = await axios.get('api/books');
+	if (!data) return;
+	books.value = data;
 }
 
 // getters

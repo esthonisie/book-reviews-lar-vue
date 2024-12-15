@@ -13,7 +13,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::with('author', 'reviews')->get();
+        $books = Book::with('author')->get();
         return BookResource::collection($books)
             ->sortBy('title')
             ->values()

@@ -3,10 +3,10 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
-use App\Http\Resources\AuthorResource;
+use App\Http\Resources\ReviewResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BookResource extends JsonResource
+class BookReviewResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,11 +15,10 @@ class BookResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $author = $this->whenLoaded('author');
         return [
-            'id' => $this->id,
             'title' => $this->title,
-            'author' => new AuthorResource($author),
+            'author' => new AuthorResource($this->author),
+            'reviews' => ReviewResource::collection($this->reviews),   
         ];
     }
 }

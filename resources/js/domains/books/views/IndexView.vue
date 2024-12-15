@@ -8,6 +8,6 @@ const showBooks = getAllBooks;
 <template>
   <ul v-for="(book) in showBooks">
     <li>{{ book.title }}</li>
-    <li>{{ book.author.first_name + ' ' + book.author.last_name}}</li>
+    <li>{{ book.author.name }}</li>
   </ul>
 </template>

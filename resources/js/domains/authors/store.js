@@ -4,11 +4,11 @@ import axios from 'axios'
 // state
 const authors = ref([]);
 
-// De functie die de aanvraag met Axios naar de backend stuurt
+// Axios
 export const fetchAuthors = async () => {
-    const {data} = await axios.get('api/authors');
-    if (!data) return;
-    authors.value = data;
+	const {data} = await axios.get('api/authors');
+	if (!data) return;
+	authors.value = data;
 }
 
 // getters
