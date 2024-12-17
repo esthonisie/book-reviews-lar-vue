@@ -51,6 +51,8 @@ import { RouterLink } from 'vue-router'
     font-weight: 700;
     text-transform: uppercase;
     padding: 14px 16px;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
   }
 
   .active {
