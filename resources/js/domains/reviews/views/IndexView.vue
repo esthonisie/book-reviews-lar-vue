@@ -15,6 +15,12 @@ const showBookData = getAllReviews;
   <div>{{ showBookData.author.name }}</div><br />
   <p>Review(s):</p>
   <ul v-for="review in showBookData.reviews">
-    <li>{{ review.body }}</li><br />
+    <li class="review">{{ review.body }}</li><br />
   </ul>
 </template>
+
+<style scoped>
+.review {
+  font-family: 'Gentium Book Plus', serif;
+}
+</style>

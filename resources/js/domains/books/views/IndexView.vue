@@ -1,13 +1,16 @@
 <script setup>
 import { fetchBooks, getAllBooks } from '../store'
+import { RouterLink } from 'vue-router'
 
 fetchBooks();
 const showBooks = getAllBooks;
 </script>
 
 <template>
-  <ul v-for="(book) in showBooks">
-    <li>{{ book.title }}</li>
-    <li>{{ book.author.name }}</li>
-  </ul>
+  <div v-for="(book) in showBooks">
+    <p><strong>{{ book.title }}</strong></p>
+    <p>{{ book.author.name }}</p>
+    <RouterLink :to="`/books/${book.id}/reviews`">show reviews</RouterLink>
+    <br /><br />
+  </div>
 </template>
