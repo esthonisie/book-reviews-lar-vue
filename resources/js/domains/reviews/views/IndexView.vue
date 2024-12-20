@@ -1,6 +1,6 @@
 <script setup>
 import ReviewsList from '../components/ReviewsList.vue'
-import { fetchReviews, getAllReviews } from '../store'
+import { fetchReviews, getAllReviews, checkIsLoaded } from '../store'
 import { useRoute } from 'vue-router'
 
 const route = useRoute();
@@ -11,5 +11,8 @@ fetchReviews(url);
 </script>
 
 <template>
-  <ReviewsList v-model="getAllReviews" />
+  <ReviewsList 
+    v-model:reviews="getAllReviews"
+    v-model:isloaded="checkIsLoaded"
+  />
 </template>

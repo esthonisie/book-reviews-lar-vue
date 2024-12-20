@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\Author::class);
             $table->string('title')->unique();
+            $table->string('cover_img');
             $table->timestamps();
         });
     }

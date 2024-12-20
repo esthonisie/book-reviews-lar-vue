@@ -22,7 +22,6 @@ import { RouterLink } from 'vue-router'
         to="/books/create">Add New Book
       </RouterLink>
     </div>
-    <div class="nav-border"></div>
   </nav>
 </template>
 
@@ -30,7 +29,9 @@ import { RouterLink } from 'vue-router'
   nav {
     position: sticky;
     top: 0;
-    background-color: #dbdbdb;
+    background-color: #fff4e9;
+    border-bottom: 4px solid #7ee1cf;
+    box-shadow: 0 2px 4px rgba(51, 13, 35, 0.2);
     z-index: 1000;
   }
 
@@ -41,24 +42,15 @@ import { RouterLink } from 'vue-router'
     margin: 0 auto;
   }
 
-  .nav-border {
-    background-color: #7ee1cf;
-    height: 14px;
-  }
-
   a {
     color: #505050;
+    font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
     padding: 14px 16px;
-    border-right: 4px solid transparent;
-    border-left: 4px solid transparent;
   }
 
   .active {
-    color: #dbdbdb;
-    background-color: #505050;
-    border-right: 4px solid #7ee1cf;
-    border-left: 4px solid #7ee1cf;
+    background-color: #ffe1ba;
   }
 </style>

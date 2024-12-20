@@ -3,13 +3,20 @@ import axios from 'axios'
 
 // state
 const reviews = ref([]);
+const isLoaded = ref(false);
 
 // Axios
 export const fetchReviews = async (url) => {
-	const {data} = await axios.get(url);
-	if (!data) return;
-	reviews.value = data;
+  isLoaded.value = false;
+  try {
+    const response = await axios.get(url);
+    reviews.value = response.data;
+    isLoaded.value = true;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 // getters
 export const getAllReviews = computed(() => reviews.value);
+export const checkIsLoaded = computed(() => isLoaded.value);

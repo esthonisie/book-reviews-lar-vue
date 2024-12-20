@@ -19,8 +19,8 @@ import Navigation from './components/Navigation.vue'
   }
 
   .content-container {
-    background-color: #fffcf5;
-    width: 1200px;
+    background-color: #ffded8;
+    max-width: 1200px;
     min-width: 920px;
     min-height: calc(100vh - 66px);
     padding: 36px 24px 60px;

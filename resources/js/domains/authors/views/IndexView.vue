@@ -1,10 +1,10 @@
 <script setup>
-import AuthorsList from '../components/AuthorsList.vue'
+import BooksList from '@/js/domains/books/components/BooksList.vue'
 import { fetchAuthors, getAllAuthors } from '../store'
 
 fetchAuthors();
 </script>
 
 <template>
-  <AuthorsList v-model="getAllAuthors" />
+  <BooksList v-model="getAllAuthors" />
 </template>

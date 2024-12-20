@@ -1,5 +1,8 @@
+<script setup>
+</script>
+
 <template>
-  <p class="todo">TODO: Create New Book Page</p>
+  <p class="todo">TODO: Admin Dashboard Page</p>
 </template>
 
 <style scoped>

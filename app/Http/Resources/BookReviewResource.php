@@ -17,6 +17,7 @@ class BookReviewResource extends JsonResource
     {
         return [
             'title' => $this->title,
+            'cover_img' => $this->cover_img,
             'author' => new AuthorResource($this->author),
             'reviews' => ReviewResource::collection($this->reviews),   
         ];

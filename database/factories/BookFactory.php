@@ -27,6 +27,7 @@ class BookFactory extends Factory
                 " " . 
                 fake()->unique()->colorName(),
             'author_id' => Author::factory(),
+            'cover_img' => "JulieDeGraag.png",
         ];
     }
 }
