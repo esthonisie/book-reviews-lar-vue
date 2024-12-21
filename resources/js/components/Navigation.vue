@@ -29,6 +29,7 @@ import { RouterLink } from 'vue-router'
   nav {
     position: sticky;
     top: 0;
+    min-width: 920px;
     background-color: #fff4e9;
     border-bottom: 4px solid #7ee1cf;
     box-shadow: 0 2px 4px rgba(51, 13, 35, 0.2);

@@ -15,7 +15,6 @@ import Navigation from './components/Navigation.vue'
 <style scoped>
   .main-container {
     width: 100vw;
-    min-width: 920px;
   }
 
   .content-container {

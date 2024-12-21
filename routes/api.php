@@ -7,10 +7,11 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\ReviewController;
 
 // Books
-Route::get('/books', [BookController::class, 'index'])->name('books.index');
+Route::get('/books', [BookController::class, 'index']);
 
 // Authors
-Route::get('/authors', [AuthorController::class, 'index'])->name('authors.index');
+Route::get('/authors', [AuthorController::class, 'index']);
 
 // Reviews
-Route::get('/books/{book}/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+Route::get('/books/{book}/reviews', [ReviewController::class, 'index']);
+Route::delete('/reviews/{review}', [ReviewController::class, 'destroy']);

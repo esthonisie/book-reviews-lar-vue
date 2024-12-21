@@ -11,7 +11,9 @@ const showBooks = defineModel();
       <p class="title">{{ book.title }}</p>
       <p class="written-by">written by:</p>
       <p class="author">{{ book.author.name }}</p>
-      <RouterLink :to="`/books/${book.id}/reviews`">&#8594; reviews</RouterLink>
+      <RouterLink :to="`/books/${book.id}/reviews`">
+        &#8594; info &#38; reviews
+      </RouterLink>
     </div>
     </template>
   </div>
