@@ -11,9 +11,8 @@ const deleteReview = (id, index) => {
 
 const route = useRoute();
 const bookId = parseInt(route.params.id);
-const url = `/api/books/${bookId}/reviews`;
 
-sendGetRequest(url);
+sendGetRequest(bookId);
 </script>
 
 <template>

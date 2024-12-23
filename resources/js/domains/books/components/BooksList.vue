@@ -6,7 +6,7 @@ const showBooks = defineModel();
 
 <template>
   <div  class="main-container">
-    <template v-for="(book) in showBooks">
+    <template v-for="book in showBooks" :key="book.id">
     <div class="book-container">
       <p class="title">{{ book.title }}</p>
       <p class="written-by">written by:</p>

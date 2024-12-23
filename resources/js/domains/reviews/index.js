@@ -8,7 +8,7 @@ const routes = [
     component: IndexView 
   },
   { 
-    path: '/reviews/create', 
+    path: '/books/:id/reviews/create', 
     component: CreateView 
   },
   { 

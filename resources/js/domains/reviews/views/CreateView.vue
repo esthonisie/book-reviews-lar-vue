@@ -1,17 +1,34 @@
-<template>
-  <p class="todo">TODO: Create New Review Page</p>
-</template>
+<script setup>
+import ReviewForm from '../components/ReviewForm.vue'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { addNewReview, sendPostRequest } from '../store'
+import { useRoute } from 'vue-router'
 
-<style scoped>
-.todo {
-  color: #424242;
-  font-size: 18px;
-  font-weight: 700;
-  background-color: #ffcc8a;
-  box-shadow: 2px 4px 6px rgba(0, 0, 255, 0.35);
-  width: fit-content;
-  min-height: 200px;
-  padding: 20px;
-  margin: 0 12px 24px;
-}
-</style>
+const router = useRouter();
+
+const route = useRoute();
+const bookId = parseInt(route.params.id);
+
+const reviewText = ref();
+
+const submitForm = () => {
+  const submitReviewText = reviewText.value;
+  if (submitReviewText) {
+    addNewReview(submitReviewText, bookId);
+    sendPostRequest();
+    // router.push(`/books/${bookId}/reviews`);
+  }
+};
+
+const btnText = ref("add");
+</script>
+
+<template>
+  <ReviewForm 
+    v-model:reviewText="reviewText"
+    v-model:bookId="bookId"
+    @submit="submitForm()" 
+  >{{ btnText }}
+  </ReviewForm>
+</template>

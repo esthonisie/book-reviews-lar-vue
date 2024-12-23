@@ -27,14 +27,14 @@ const getImageUrl = (name) => {
         <p v-if="showBookData.reviews.length === 0">
           There seem to be no reviews yet.<br />
           Would you like to share your thoughts about this book?<br />
-          &#8594; Leave a review <RouterLink to="/reviews/create">here</RouterLink>
+          &#8594; Leave a review <RouterLink :to="`/books/${showBookData.id}/reviews/create`">here</RouterLink>
         </p>
         <p v-else>
           Would you also like to share your thoughts about this book?<br />
-          &#8594; Leave a review <RouterLink to="/reviews/create">here</RouterLink>
+          &#8594; Leave a review <RouterLink :to="`/books/${showBookData.id}/reviews/create`">here</RouterLink>
         </p>
       </div>
-      <template v-for="(review, index) in showBookData.reviews">
+      <template v-for="(review, index) in showBookData.reviews" :key="review.id">
         <div class="review-container">
           <div class="review-header-container">
             <p>somehuman2222 &#x2022; 16 august 2042</p>
