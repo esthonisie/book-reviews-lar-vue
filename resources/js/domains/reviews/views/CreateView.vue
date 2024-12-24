@@ -2,7 +2,7 @@
 import ReviewForm from '../components/ReviewForm.vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { addNewReview, sendPostRequest } from '../store'
+import { sendPostRequest } from '../store'
 import { useRoute } from 'vue-router'
 
 const router = useRouter();
@@ -15,19 +15,17 @@ const reviewText = ref();
 const submitForm = () => {
   const submitReviewText = reviewText.value;
   if (submitReviewText) {
-    addNewReview(submitReviewText, bookId);
-    sendPostRequest();
-    // router.push(`/books/${bookId}/reviews`);
+    sendPostRequest(submitReviewText, bookId);
+    router.push(`/books/${bookId}/reviews`);
   }
 };
 
-const btnText = ref("add");
+const btnText = "add";
 </script>
 
 <template>
   <ReviewForm 
     v-model:reviewText="reviewText"
-    v-model:bookId="bookId"
     @submit="submitForm()" 
   >{{ btnText }}
   </ReviewForm>

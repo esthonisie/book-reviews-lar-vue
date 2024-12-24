@@ -1,23 +1,12 @@
 <script setup>
-import { RouterLink } from 'vue-router'
-
 const reviewText = defineModel('reviewText');
-const bookId = defineModel('bookId');
 </script>
 
 <template>
   <form @submit.prevent="submitForm">
     <label for="body">your review:</label>
     <textarea id="body" name="body" v-model="reviewText"></textarea>
-    <div>
-      <button type="submit"><slot>submit</slot></button>
-      <!-- 
-      temp ugly fix of problem first review (after start running server) 
-      not showing on page after router.push redirect
-      -->
-      <RouterLink :to="`/books/${bookId}/reviews`">go back to reviews</RouterLink>
-      <!-- temp ugly fix -->
-    </div>
+    <button type="submit"><slot>submit</slot></button>
   </form>
 </template>
 

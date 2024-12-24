@@ -2,13 +2,14 @@
 import { RouterLink } from 'vue-router'
 import { summary } from '@/js/domains/books/helpers/summary'
 
-const showBookData = defineModel('reviews');
 const isLoaded = defineModel('isloaded');
-const deleteReview = defineModel('deleteReview');
+const showBookData = defineModel('reviews');
 
 const getImageUrl = (name) => {
   return new URL(`/public/img/${name}`, import.meta.url).href;
 };
+
+const emit = defineEmits(['deleteReview']);
 </script>
 
 <template>
@@ -34,7 +35,7 @@ const getImageUrl = (name) => {
           &#8594; Leave a review <RouterLink :to="`/books/${showBookData.id}/reviews/create`">here</RouterLink>
         </p>
       </div>
-      <template v-for="(review, index) in showBookData.reviews" :key="review.id">
+      <template v-for="(review) in showBookData.reviews" :key="review.id">
         <div class="review-container">
           <div class="review-header-container">
             <p>somehuman2222 &#x2022; 16 august 2042</p>
@@ -44,7 +45,7 @@ const getImageUrl = (name) => {
                 class="edit-review-link">edit
               </RouterLink>
               <p>|</p>
-              <p @click="deleteReview(review.id, index)" class="delete-review-link">delete</p>
+              <p @click="emit('deleteReview', review.id)" class="delete-review-link">delete</p>
             </div>
           </div>
           <div class="review-body">{{ review.body }}</div>
