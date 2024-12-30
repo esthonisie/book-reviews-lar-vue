@@ -6,7 +6,7 @@ use App\Models\Book;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreReviewRequest;
-use App\Http\Resources\BookReviewResource;
+use App\Http\Resources\ReviewResource;
 
 class ReviewController extends Controller
 {
@@ -15,7 +15,8 @@ class ReviewController extends Controller
      */
     public function index(Book $book)
     {
-        return new BookReviewResource($book);
+        $reviews = Review::where('book_id', $book->id)->get();
+        return ReviewResource::collection($reviews);
     }
 
     /**

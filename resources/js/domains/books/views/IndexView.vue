@@ -1,10 +1,21 @@
 <script setup>
 import BooksList from '../components/BooksList.vue'
-import { fetchBooks, getAllBooks } from '../store'
+import { 
+  requestGetBooks,
+  getBooks,
+  getBooksByAuthor,
+  checkIsSorted,
+  updateIsSorted, 
+} from '../storeAllBooks'
 
-fetchBooks();
+requestGetBooks();
 </script>
 
 <template>
-  <BooksList v-model="getAllBooks" />
+  <BooksList 
+    :books="getBooks"
+    :booksByAuthor="getBooksByAuthor"
+    :checkIsSorted="checkIsSorted"
+    @updateIsSorted="(boolean) => updateIsSorted(boolean)"
+  />
 </template>

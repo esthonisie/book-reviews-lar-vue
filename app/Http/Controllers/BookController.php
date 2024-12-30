@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use App\Http\Resources\BooksResource;
 use App\Http\Resources\BookResource;
 
 class BookController extends Controller
@@ -14,7 +15,7 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::with('author')->get();
-        return BookResource::collection($books)
+        return BooksResource::collection($books)
             ->sortBy('title')
             ->values()
             ->all()
@@ -40,9 +41,9 @@ class BookController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Book $book)
     {
-        //
+        return new BookResource($book);
     }
 
     /**

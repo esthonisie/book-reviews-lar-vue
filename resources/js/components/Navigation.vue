@@ -11,11 +11,7 @@ import { RouterLink } from 'vue-router'
       </RouterLink>
       <RouterLink 
         active-class="active" 
-        to="/books">Sort Books by Title
-      </RouterLink>
-      <RouterLink 
-        active-class="active" 
-        to="/authors">Sort Books by Author
+        to="/books">View All Books
       </RouterLink>
       <RouterLink 
         active-class="active" 
