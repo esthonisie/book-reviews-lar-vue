@@ -1,9 +1,8 @@
 <script setup>
 import ReviewForm from '../components/ReviewForm.vue'
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { sendPostRequest } from '../store'
-import { useRoute } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
+import { requestPostReview } from '../store'
 
 const router = useRouter();
 
@@ -15,8 +14,10 @@ const reviewText = ref();
 const submitForm = () => {
   const submitReviewText = reviewText.value;
   if (submitReviewText) {
-    sendPostRequest(submitReviewText, bookId);
-    router.push(`/books/${bookId}/reviews`);
+    requestPostReview(submitReviewText, bookId);
+    setTimeout(() => {
+      router.push(`/books/${bookId}`);
+    }, 100);
   }
 };
 

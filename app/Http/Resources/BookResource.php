@@ -15,11 +15,11 @@ class BookResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $author = $this->whenLoaded('author');
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'author' => new AuthorResource($author),
+            'cover_img' => $this->cover_img,
+            'author' => new AuthorResource($this->author),
         ];
     }
 }
