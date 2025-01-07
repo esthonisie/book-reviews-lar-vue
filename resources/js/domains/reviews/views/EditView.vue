@@ -1,17 +1,38 @@
-<template>
-  <p class="todo">TODO: Create Edit Review Page</p>
-</template>
+<script setup>
+import ReviewForm from '../components/ReviewForm.vue'
+import { ref, onMounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import { requestUpdateReview, requestGetReview, getReview } from '../store'
 
-<style scoped>
-.todo {
-  color: #424242;
-  font-size: 18px;
-  font-weight: 700;
-  background-color: #ffcc8a;
-  box-shadow: 2px 4px 6px rgba(0, 0, 255, 0.35);
-  width: fit-content;
-  min-height: 200px;
-  padding: 20px;
-  margin: 0 12px 24px;
-}
-</style>
+const router = useRouter();
+
+const route = useRoute();
+const reviewId = parseInt(route.params.id);
+
+const reviewText = ref();
+
+onMounted(async() => {
+  await requestGetReview(reviewId);
+  const review = Object.assign({}, getReview.value);
+  reviewText.value = review.body;
+});
+
+const submitForm = async () => {
+  // const submitReviewText = reviewText.value;
+  if (reviewText.value) {
+    await requestUpdateReview(reviewText.value, reviewId);
+    // router.push(`/books/${bookId}`);
+    router.back();
+  }
+};
+
+const btnText = "edit";
+</script>
+
+<template>
+  <ReviewForm 
+    v-model:reviewText="reviewText"
+    @submit="submitForm()" 
+  >{{ btnText }}
+  </ReviewForm>
+</template>

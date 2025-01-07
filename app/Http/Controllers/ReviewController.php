@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Review;
-use Illuminate\Http\Request;
-use App\Http\Requests\StoreReviewRequest;
 use App\Http\Resources\ReviewResource;
+use App\Http\Requests\StoreReviewRequest;
+use App\Http\Requests\UpdateReviewRequest;
 
 class ReviewController extends Controller
 {
@@ -15,16 +15,7 @@ class ReviewController extends Controller
      */
     public function index(Book $book)
     {
-        $reviews = Review::where('book_id', $book->id)->get();
-        return ReviewResource::collection($reviews);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return ReviewResource::collection($book->reviews);
     }
 
     /**
@@ -40,25 +31,19 @@ class ReviewController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Review $review)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        return new ReviewResource($review);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateReviewRequest $request, Review $review)
     {
-        //
+        $validated = $request->validated();
+
+        $review->update($validated);
     }
 
     /**

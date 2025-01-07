@@ -12,7 +12,9 @@ Route::get('/books/{book}', [BookController::class, 'show']);
 
 // Reviews
 Route::get('/books/{book}/reviews', [ReviewController::class, 'index']);
+Route::get('/reviews/{review}', [ReviewController::class, 'show']);
 Route::post('/reviews', [ReviewController::class, 'store']);
+Route::patch('/reviews/{review}', [ReviewController::class, 'update']);
 Route::delete('/reviews/{review}', [ReviewController::class, 'destroy']);
 
 // Authors
