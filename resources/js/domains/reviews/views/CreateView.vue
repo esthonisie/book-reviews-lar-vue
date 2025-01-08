@@ -11,13 +11,11 @@ const bookId = parseInt(route.params.id);
 
 const reviewText = ref();
 
-const submitForm = () => {
+const submitForm = async () => {
   const submitReviewText = reviewText.value;
   if (submitReviewText) {
-    requestPostReview(submitReviewText, bookId);
-    setTimeout(() => {
-      router.push(`/books/${bookId}`);
-    }, 100);
+    await requestPostReview(submitReviewText, bookId);
+    router.back();
   }
 };
 

@@ -1,35 +1,35 @@
 <script setup>
-import { provide } from 'vue';
-import { useRoute } from 'vue-router'
 import BookInfo from '../components/BookInfo.vue'
-import { 
-  requestGetBook, 
-  getBook, 
-  checkIsLoaded 
-} from '../storeSingleBook'
-// for the nested reviews component
+import { provide } from 'vue'
+import { useRoute } from 'vue-router'
+import { checkIsLoaded, updateIsLoaded } from '@/js/helpers/loader'
+import { requestGetBook, getBook } from '../store'
 import { 
   requestGetReviews, 
   getReviews, 
-  requestDeleteReview 
+  requestDeleteReview,
 } from '@/js/domains/reviews/store'
 
 const route = useRoute();
 const bookId = parseInt(route.params.id);
 
-requestGetBook(bookId);
+const requestAllData = async (bookId) => {
+  updateIsLoaded(false);
+  await Promise.all([requestGetBook(bookId), requestGetReviews(bookId)]);
+  updateIsLoaded(true);
+};
+
+requestAllData(bookId);
 
 // for the nested reviews component
-provide('reviews', getReviews);
 provide('bookId', bookId);
+provide('reviews', getReviews);
 provide('deleteReview', requestDeleteReview);
-
-requestGetReviews(bookId);
 </script>
 
 <template>
   <BookInfo 
-    :book="getBook"
     :isLoaded="checkIsLoaded"
+    :book="getBook"
   />
 </template>

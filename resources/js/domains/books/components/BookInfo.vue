@@ -1,9 +1,9 @@
 <script setup>
-import { summary } from '@/js/domains/books/components/summaryText'
 import ReviewsList from '@/js/domains/reviews/components/ReviewsList.vue'
+import { summary } from './summaryText'
 
 const isLoaded = defineModel('isLoaded');
-const bookData = defineModel('book');
+const book = defineModel('book');
 
 const getImageUrl = (name) => {
   return new URL(`/public/img/${name}`, import.meta.url).href;
@@ -13,9 +13,9 @@ const getImageUrl = (name) => {
 <template>
   <div v-if="isLoaded" class="main-container">
     <div class="book-info-container">
-      <p class="title">{{ bookData.title }}</p>
-      <p class="author">{{ bookData.author?.name }}</p>
-      <img :src="getImageUrl(bookData.cover_img)" class="book-cover" />
+      <p class="title">{{ book.title }}</p>
+      <p class="author">{{ book.author?.name }}</p>
+      <img :src="getImageUrl(book?.cover_img)" class="book-cover" />
       <div class="summary-container">
         <p>summary:</p>
         <div>{{ summary }}</div>
@@ -33,8 +33,6 @@ const getImageUrl = (name) => {
   grid-template-columns: 2fr 5fr;
   width: 100%;
 }
-
-/* -------------- */
 
 .book-info-container {
   background-color: #fff4e9;

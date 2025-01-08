@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
 use App\Models\Review;
 use App\Http\Resources\ReviewResource;
 use App\Http\Requests\StoreReviewRequest;
@@ -13,9 +12,9 @@ class ReviewController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Book $book)
+    public function index()
     {
-        return ReviewResource::collection($book->reviews);
+        //
     }
 
     /**

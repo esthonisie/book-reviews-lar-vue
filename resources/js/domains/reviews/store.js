@@ -1,26 +1,39 @@
 import { ref, computed } from 'vue'
 import axios from 'axios'
 
+// -----------------------------------------------------------------------------
+// ------ ALL REVIEWS ----------------------------------------------------------
+// -----------------------------------------------------------------------------
+
+// state
+const reviews = ref([]);
+
+// Axios
+export const requestGetReviews = async (bookId) => {
+  try {
+    const response = await axios.get(`/api/books/${bookId}/reviews`);
+    reviews.value = response.data;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+// getters
+export const getReviews = computed(() => reviews.value);
+
+
+// -----------------------------------------------------------------------------
+// ------ SINGLE REVIEW --------------------------------------------------------
+// -----------------------------------------------------------------------------
+
 // state
 const review = ref();
-const reviews = ref([]);
 
 // Axios
 export const requestGetReview = async (reviewId) => {
   try {
     const response = await axios.get(`/api/reviews/${reviewId}`);
     review.value = response.data;
-    // console.log(review.value);
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-export const requestGetReviews = async (bookId) => {
-  try {
-    const response = await axios.get(`/api/books/${bookId}/reviews`);
-    reviews.value = response.data;
-    // console.log(reviews.value);
   } catch (err) {
     console.error(err);
   }
@@ -61,4 +74,3 @@ export const requestDeleteReview = async (id) => {
 
 // getters
 export const getReview = computed(() => review.value);
-export const getReviews = computed(() => reviews.value);

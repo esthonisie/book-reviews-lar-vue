@@ -1,10 +1,9 @@
 <script setup>
-import { RouterLink } from 'vue-router'
 import { inject } from 'vue'
 
 // data
-const reviewsData = inject('reviews');
 const bookId = inject('bookId');
+const reviews = inject('reviews');
 
 // functions
 const deleteReview = inject('deleteReview');
@@ -12,7 +11,7 @@ const deleteReview = inject('deleteReview');
 
 <template>
   <div class="review-container add-review-container">
-    <p v-if="reviewsData.length === 0">
+    <p v-if="reviews.length === 0">
       There seem to be no reviews yet.<br />
       Would you like to share your thoughts about this book?<br />
       &#8594; Leave a review <RouterLink :to="`/books/${bookId}/reviews/create`">here</RouterLink>
@@ -22,21 +21,21 @@ const deleteReview = inject('deleteReview');
       &#8594; Leave a review <RouterLink :to="`/books/${bookId}/reviews/create`">here</RouterLink>
     </p>
   </div>
-  <template v-for="(review) in reviewsData" :key="review.id">
-    <div class="review-container">
-      <div class="review-header-container">
-        <p>somehuman2222 &#x2022; 16 august 2042</p>
-        <div class="review-links-container">
-          <RouterLink 
-            :to="`/reviews/edit/${review.id}`" 
-            class="edit-review-link">edit
-          </RouterLink>
-          <p>|</p>
-          <p @click="deleteReview(review.id)" class="delete-review-link">delete</p>
-        </div>
+  <template v-for="(review) in reviews" :key="review.id">
+  <div class="review-container">
+    <div class="review-header-container">
+      <p>somehuman2222 &#x2022; 16 august 2042</p>
+      <div class="review-links-container">
+        <RouterLink 
+          :to="`/reviews/edit/${review.id}`" 
+          class="edit-review-link">edit
+        </RouterLink>
+        <p>|</p>
+        <p @click="deleteReview(review.id)" class="delete-review-link">delete</p>
       </div>
-      <div class="review-body">{{ review.body }}</div>
     </div>
+    <div class="review-body">{{ review.body }}</div>
+  </div>
   </template>  
 </template>
 

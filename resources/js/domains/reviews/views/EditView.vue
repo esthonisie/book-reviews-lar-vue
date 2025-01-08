@@ -11,17 +11,15 @@ const reviewId = parseInt(route.params.id);
 
 const reviewText = ref();
 
-onMounted(async() => {
+onMounted(async () => {
   await requestGetReview(reviewId);
   const review = Object.assign({}, getReview.value);
   reviewText.value = review.body;
 });
 
 const submitForm = async () => {
-  // const submitReviewText = reviewText.value;
   if (reviewText.value) {
     await requestUpdateReview(reviewText.value, reviewId);
-    // router.push(`/books/${bookId}`);
     router.back();
   }
 };

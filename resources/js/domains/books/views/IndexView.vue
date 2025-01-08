@@ -6,7 +6,7 @@ import {
   getBooksByAuthor,
   checkIsSorted,
   updateIsSorted, 
-} from '../storeAllBooks'
+} from '../store'
 
 requestGetBooks();
 </script>
