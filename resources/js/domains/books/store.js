@@ -49,5 +49,17 @@ export const requestGetBook = async (bookId) => {
   }
 };
 
+export const requestDeleteBook = async (id) => {
+  try {
+      const response = await axios.delete(`/api/books/${id}`);
+      console.log(response.data);
+      // action delete book front-end
+      const index = books.value.findIndex((elem) => elem.id == id);
+      books.value.splice(index, 1);
+  } catch (err) {
+      console.error(err);
+  }
+};
+
 // getters
 export const getBook = computed(() => book.value);

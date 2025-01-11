@@ -1,7 +1,9 @@
 <script setup>
 import BooksList from '../components/BooksList.vue'
+import { provide } from 'vue'
 import { 
   requestGetBooks,
+  requestDeleteBook,
   getBooks,
   getBooksByAuthor,
   checkIsSorted,
@@ -9,6 +11,9 @@ import {
 } from '../store'
 
 requestGetBooks();
+
+// for the nested BooksListBlock component
+provide('deleteBook', requestDeleteBook);
 </script>
 
 <template>

@@ -64,7 +64,7 @@ export const requestDeleteReview = async (id) => {
   try {
       const response = await axios.delete(`/api/reviews/${id}`);
       console.log(response.data);
-      // action deleteReview
+      // action delete review front-end
       const index = reviews.value.findIndex((elem) => elem.id == id);
       reviews.value.splice(index, 1);
   } catch (err) {

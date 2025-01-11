@@ -10,6 +10,7 @@ use App\Http\Controllers\BookReviewController;
 // Books
 Route::get('/books', [BookController::class, 'index']);
 Route::get('/books/{book}', [BookController::class, 'show']);
+Route::delete('/books/{book}', [BookController::class, 'destroy']);
 
 // Book ---> Reviews
 Route::get('/books/{book}/reviews', [BookReviewController::class, 'index']);

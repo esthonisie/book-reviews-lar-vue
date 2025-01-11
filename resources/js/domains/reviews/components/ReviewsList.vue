@@ -54,14 +54,8 @@ const deleteReview = inject('deleteReview');
   text-transform: uppercase;
 }
 
-.add-review-container a,
-.edit-review-link {
+.add-review-container a {
   color: #329f96;
-}
-
-.delete-review-link {
-  color: #e46464;
-  cursor: pointer;
 }
 
 .review-header-container,
@@ -70,9 +64,21 @@ const deleteReview = inject('deleteReview');
 }
 
 .review-links-container {
+  color: #7a7a7a;
+  font-size: 12px;
   justify-content: space-between;
   width: 100px;
+  margin-top: 2px;
   margin-left: 40px;
+}
+
+.edit-review-link {
+  color: #329f96;
+}
+
+.delete-review-link {
+  color: #e46464;
+  cursor: pointer;
 }
 
 .review-body {
