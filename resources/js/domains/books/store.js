@@ -49,6 +49,26 @@ export const requestGetBook = async (bookId) => {
   }
 };
 
+export const requestPostBook = async (submitBook) => {
+  try {
+      await axios.post(`/api/books`, {
+        
+      });
+  } catch (err) {
+      console.error(err);
+  }
+};
+
+/* export const requestUpdateBook = async (submitBook, bookId) => {
+  try {
+      await axios.patch(`/api/books/${bookId}`, {
+        
+      });
+  } catch (err) {
+      console.error(err);
+  }
+}; */
+
 export const requestDeleteBook = async (id) => {
   try {
       const response = await axios.delete(`/api/books/${id}`);

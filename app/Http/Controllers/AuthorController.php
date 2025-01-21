@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
 use Illuminate\Http\Request;
+use App\Http\Resources\AuthorResource;
+use App\Http\Requests\StoreAuthorRequest;
 
 class AuthorController extends Controller
 {
@@ -11,15 +14,22 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        //
+        $authors = Author::with('books')->get();
+        return AuthorResource::collection($authors)
+            ->sortBy('last_name')
+            ->values()
+            ->all()
+        ;
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreAuthorRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        Author::create($validated);
     }
 
     /**

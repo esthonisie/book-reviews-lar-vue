@@ -1,11 +1,20 @@
 <script setup>
-const reviewText = defineModel('reviewText');
+import { inject } from 'vue'
+
+// data
+const firstName = defineModel('firstName');
+const lastName = defineModel('lastName');
+
+// functions
+const submitAuthor = inject('submitAuthor');
 </script>
 
 <template>
-  <form @submit.prevent="submitForm">
-    <label for="body">your review:</label>
-    <textarea id="body" name="body" v-model="reviewText"></textarea>
+  <form @submit.prevent="submitAuthor">
+    <label for="first_name">author's first name</label>
+    <input id="first_name" placeholder="e.g. Nicci or J.R." v-model="firstName">
+    <label for="last_name">author's last name:</label>
+    <input id="last_name" placeholder="e.g. French" v-model="lastName">
     <button type="submit"><slot>submit</slot></button>
   </form>
 </template>
@@ -17,8 +26,7 @@ form {
   background-color: #ffcc8a;
   box-shadow: 2px 4px 6px rgba(0, 0, 255, 0.35);
   padding: 20px;
-  width: fit-content;
-  margin: 0 auto;
+  margin: 0 10px;
 }
 
 label {
@@ -28,26 +36,27 @@ label {
   margin-bottom: 6px;
 }
 
-textarea {
+input, select {
   color: #252525;
   background-color: #fff4e9;
   font-family: 'Gentium Book Plus', serif;
-  padding: 20px;
+  padding: 12px;
   border-radius: 4px;
   border: 1px solid #b2b2b2;
-  width: 320px;
-  height: 180px;
+  margin-bottom: 10px;
 }
 
-textarea:focus {
+input:focus, select:focus {
   outline: 1px solid #7ee1cf;
 }
 
-/* textarea::placeholder {
-} */
+input::placeholder {
+  color: #7a7a7a;
+}
 
-/* textarea::-ms-input-placeholder {
-} */
+input::-ms-input-placeholder {
+  color: #7a7a7a;
+}
 
 button {
   color: #329f96;
@@ -58,7 +67,6 @@ button {
   border-radius: 4px;
   width: fit-content;
   padding: 8px 12px;
-  margin-top: 10px;
 }
 
 a {

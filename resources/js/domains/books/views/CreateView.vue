@@ -1,17 +1,41 @@
-<template>
-  <p class="todo">TODO: Create New Book Page</p>
-</template>
+<script setup>
+import BookForm from '../components/BookForm.vue'
+import { ref, provide } from 'vue'
+import { useRouter } from 'vue-router'
+import { 
+  requestGetAuthors, 
+  requestPostAuthor, 
+  getAuthors 
+} from '@/js/domains/authors/store'
 
-<style scoped>
-.todo {
-  color: #424242;
-  font-size: 18px;
-  font-weight: 700;
-  background-color: #ffcc8a;
-  box-shadow: 2px 4px 6px rgba(0, 0, 255, 0.35);
-  width: fit-content;
-  min-height: 200px;
-  padding: 20px;
-  margin: 0 12px 24px;
-}
-</style>
+const router = useRouter();
+
+// BOOKFORM DATA
+const btnText = "add book";
+
+requestGetAuthors();
+
+// AUTHORFORM DATA
+const firstName = ref();
+const lastName = ref();
+
+const submitAuthor = async () => {
+  const newFirstName = firstName.value;
+  const newLastName = lastName.value;
+  if (newFirstName && newLastName) {
+    await requestPostAuthor(newFirstName, newLastName);
+    router.go();
+  }
+};
+
+provide('submitAuthor', submitAuthor);
+</script>
+
+<template>
+  <BookForm 
+    v-model:firstName="firstName"
+    v-model:lastName="lastName"
+    :authors="getAuthors"
+  >{{ btnText }}
+  </BookForm>
+</template>
