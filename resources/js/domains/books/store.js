@@ -49,10 +49,12 @@ export const requestGetBook = async (bookId) => {
   }
 };
 
-export const requestPostBook = async (submitBook) => {
+export const requestPostBook = async (newAuthorId, newBookTitle) => {
   try {
       await axios.post(`/api/books`, {
-        
+        title: newBookTitle, 
+        author_id: newAuthorId,
+        cover_img: "JulieDeGraag.png", 
       });
   } catch (err) {
       console.error(err);

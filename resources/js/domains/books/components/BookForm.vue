@@ -1,9 +1,12 @@
 <script setup>
 import AuthorForm from '@/js/domains/authors/components/AuthorForm.vue'
 
-const authors = defineModel('authors');
 const firstName = defineModel('firstName');
 const lastName = defineModel('lastName');
+
+const authors = defineModel('authors');
+const authorId = defineModel('authorId');
+const bookTitle = defineModel('bookTitle');
 </script>
 
 <template>
@@ -14,14 +17,17 @@ const lastName = defineModel('lastName');
     </p>
     <div class="forms-container">
       <AuthorForm v-model:firstName="firstName" v-model:lastName="lastName" />
-      <form @submit.prevent="submitForm">
+      <form @submit.prevent="submitBook">
         <label for="author">choose author:</label>
-        <input id="author" list="authors">
+        <!-- <input id="author" list="authors">
         <datalist id="authors">
           <option v-for="author in authors">{{ author.name }}</option>
-        </datalist>
+        </datalist> -->
+        <select id="author" v-model="authorId">
+          <option v-for="author in authors" :value="author.id">{{ author.name }}</option>
+        </select>
         <label for="title">booktitle:</label>
-        <input id="title" name="title">
+        <input id="title" v-model="bookTitle">
         <button type="submit"><slot>submit</slot></button>
       </form>
     </div>
