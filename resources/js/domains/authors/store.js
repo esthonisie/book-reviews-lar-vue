@@ -41,10 +41,12 @@ export const requestGetAuthor = async (authorId) => {
 
 export const requestPostAuthor = async (firstName, lastName) => {
   try {
-      await axios.post(`/api/authors`, {
+      const { data } = await axios.post(`/api/authors`, {
         first_name: firstName, 
         last_name: lastName, 
       });
+      authors.value.push(data);
+      return data;
   } catch (err) {
       console.error(err);
   }

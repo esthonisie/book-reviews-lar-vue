@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router'
 import { 
   requestGetAuthors, 
   requestPostAuthor, 
-  getAuthors 
+  getAuthors, 
 } from '@/js/domains/authors/store'
 import { requestPostBook } from '../store'
 
@@ -21,12 +21,13 @@ const submitAuthor = async () => {
   const newFirstName = firstName.value;
   const newLastName = lastName.value;
   if (newFirstName && newLastName) {
-    await requestPostAuthor(newFirstName, newLastName);
+    const newAuthor = await requestPostAuthor(newFirstName, newLastName);
     await requestGetAuthors();
+    // fills in new author name in the BookForm
+    authorId.value = newAuthor.id;
+    // clears new author names in the AuthorForm
     firstName.value = "";
     lastName.value = "";
-    // make function for retrieving author's ID based on firstname & lastname
-    // authorId.value = ;
   }
 };
 

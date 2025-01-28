@@ -39,7 +39,7 @@ const bookTitle = defineModel('bookTitle');
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 600px;
+  width: 598px;
   margin: 0 auto;
 }
 
@@ -63,6 +63,7 @@ form {
   flex-direction: column;
   background-color: #ffcc8a;
   box-shadow: 2px 4px 6px rgba(0, 0, 255, 0.35);
+  width: 240px;
   padding: 20px;
   margin: 0 10px;
 }

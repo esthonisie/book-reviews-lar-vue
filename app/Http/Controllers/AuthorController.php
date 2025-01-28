@@ -29,7 +29,7 @@ class AuthorController extends Controller
     {
         $validated = $request->validated();
 
-        Author::create($validated);
+        return Author::create($validated);
     }
 
     /**
