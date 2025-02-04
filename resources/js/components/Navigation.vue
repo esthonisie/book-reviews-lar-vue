@@ -11,6 +11,10 @@ import { RouterLink } from 'vue-router'
       </RouterLink>
       <RouterLink 
         active-class="active" 
+        to="/dashboard">Dashboard
+      </RouterLink>
+      <RouterLink 
+        active-class="active" 
         to="/books">View All Books
       </RouterLink>
       <RouterLink 
