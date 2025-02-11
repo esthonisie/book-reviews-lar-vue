@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\BookResource;
 use App\Http\Resources\BooksResource;
 use App\Http\Requests\StoreBookRequest;
+use App\Http\Requests\UpdateBookRequest;
 
 class BookController extends Controller
 {
@@ -44,9 +45,11 @@ class BookController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateBookRequest $request, Book $book)
     {
-        //
+        $validated = $request->validated();
+
+        $book->update($validated);
     }
 
     /**

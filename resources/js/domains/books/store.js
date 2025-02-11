@@ -12,7 +12,7 @@ const isSortedByAuthor = ref(false);
 // Axios
 export const requestGetBooks = async () => {
   try {
-    const response = await axios.get('api/books');
+    const response = await axios.get('/api/books');
     books.value = response.data;
   } catch (err) {
     console.error(err);
@@ -61,15 +61,15 @@ export const requestPostBook = async (newAuthorId, newBookTitle) => {
   }
 };
 
-/* export const requestUpdateBook = async (submitBook, bookId) => {
+export const requestUpdateTitle = async (titleText, bookId) => {
   try {
       await axios.patch(`/api/books/${bookId}`, {
-        
+        title: titleText,
       });
   } catch (err) {
       console.error(err);
   }
-}; */
+};
 
 export const requestDeleteBook = async (id) => {
   try {

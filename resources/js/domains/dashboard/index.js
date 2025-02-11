@@ -11,7 +11,7 @@ const routes = [
       {
         path: '',
         component: MainView,
-        name: 'dashboard.overview'
+        name: 'dashboard.main'
       },
       {
         path: 'books',

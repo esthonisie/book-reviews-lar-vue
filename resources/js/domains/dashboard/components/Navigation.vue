@@ -6,7 +6,7 @@ import { RouterLink } from 'vue-router'
   <nav>
     <RouterLink 
       class="safe-link"
-      :to="{ name: 'dashboard.overview' }">- main overview
+      :to="{ name: 'dashboard.main' }">- main overview
     </RouterLink>
     <RouterLink 
       class="safe-link"
@@ -24,8 +24,12 @@ import { RouterLink } from 'vue-router'
 
 <style scoped>
   nav {
+    position: sticky;
+    top: 88px;
     display: flex;
     flex-direction: column;
+    width: 275px;
+    height: 225px;
     padding: 20px;
     margin-right: 24px;
     background-color: #fff4e9;
