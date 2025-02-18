@@ -1,14 +1,17 @@
-<template>
-  <div class="todo">All Authors List</div>
-</template>
+<script setup>
+import AuthorsList from '../components/AuthorsList.vue'
+import { 
+  requestGetAuthors, 
+  getAuthors, 
+  requestDeletAuthor 
+} from '@/js/domains/authors/store'
 
-<style scoped>
-  .todo {
-    color: #424242;
-    font-size: 18px;
-    text-align: center;
-    background-color: #ffcc8a;
-    box-shadow: 2px 4px 6px rgba(0, 0, 255, 0.35);
-    padding: 20px;
-  }
-</style>
+requestGetAuthors();
+</script>
+
+<template>
+  <AuthorsList 
+    :authors="getAuthors"
+    @deleteAuthor="(id) => requestDeletAuthor(id)"
+  />
+</template>

@@ -60,7 +60,7 @@ export const requestPostAuthor = async (firstName, lastName) => {
   } catch (err) {
       console.error(err);
   }
-};
+}; */
 
 export const requestDeletAuthor = async (id) => {
   try {
@@ -72,7 +72,7 @@ export const requestDeletAuthor = async (id) => {
   } catch (err) {
       console.error(err);
   }
-}; */
+};
 
 // getters
 export const getAuthor = computed(() => author.value);
