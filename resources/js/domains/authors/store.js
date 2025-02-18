@@ -52,15 +52,16 @@ export const requestPostAuthor = async (firstName, lastName) => {
   }
 };
 
-/* export const requestUpdateAuthor = async (submitAuthor, authorId) => {
+export const requestUpdateAuthor = async (firstName, lastName, id) => {
   try {
-      await axios.patch(`/api/authors/${authorId}`, {
-        
+      await axios.patch(`/api/authors/${id}`, {
+        first_name: firstName, 
+        last_name: lastName, 
       });
   } catch (err) {
       console.error(err);
   }
-}; */
+};
 
 export const requestDeletAuthor = async (id) => {
   try {

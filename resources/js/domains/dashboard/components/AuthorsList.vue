@@ -1,5 +1,5 @@
 <script setup>
-// import { RouterLink } from 'vue-router';
+import { RouterLink } from 'vue-router';
 
 const authors = defineModel('authors');
 
@@ -17,8 +17,7 @@ const emit = defineEmits(['deleteAuthor'])
       <div class="author-container">
         <p class="author-name">{{ author.name }}</p>
         <div class="links-container">
-          <a href="">edit</a>
-          <!-- <RouterLink :to="`/authors/edit/${author.id}`">edit</RouterLink> -->
+          <RouterLink :to="`/authors/edit/${author.id}`">edit</RouterLink>
           <p @click="emit('deleteAuthor', author.id)" class="delete-link">x</p>
         </div>
       </div>

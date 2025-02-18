@@ -17,9 +17,9 @@ const routes = [
     component: CreateView 
   },
   { 
-      path: '/books/edit/:id', 
-      component: EditView
-    },
+    path: '/books/edit/:id', 
+    component: EditView
+  },
 ];
 
 export default routes;
