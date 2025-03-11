@@ -1,36 +1,42 @@
 <script setup>
-import { RouterLink } from 'vue-router';
+import AuthorsListBlock from './AuthorsListBlock.vue'
 
 const authors = defineModel('authors');
+const authorsByQuantityDesc = defineModel('authorsByQuantityDesc');
 
-const emit = defineEmits(['deleteAuthor'])
+const checkIsSorted = defineModel('checkIsSorted');
+const emit = defineEmits(['updateIsSorted']);
 </script>
 
 <template>
-  <div class="all-authors-container">
+  <div class="all-authors-main-box">
     <div class="title-bar">
-      <p>Authors:</p>
-      <p>TODO - Books in Database: ascending btn / descending btn</p>
-    </div>
-    <template v-for="author in authors" :key="author.id">
-    <div class="author-all-info-container">
-      <div class="author-container">
-        <p class="author-name">{{ author.name }}</p>
-        <div class="links-container">
-          <RouterLink :to="`/authors/edit/${author.id}`">edit</RouterLink>
-          <p @click="emit('deleteAuthor', author.id)" class="delete-link">x</p>
-        </div>
+      <div class="title-names-box">
+        <p>Authors:</p>
+        <p>Books in Database:</p>
       </div>
-      <div class="database-container">
-        <p>1</p>
+      <div class="database-btn-box">
+        <button @click="emit('updateIsSorted', false)"
+          :class="checkIsSorted ? 'btn-inactive' : 'btn-active'"
+          >&#8593;
+        </button>
+        <button @click="emit('updateIsSorted', true)" 
+          :class="checkIsSorted ? 'btn-active' : 'btn-inactive'"
+          >&#8595;
+        </button>
       </div>
     </div>
+    <template v-if="checkIsSorted">
+      <AuthorsListBlock :authors="authorsByQuantityDesc" />
+    </template>
+    <template v-else>
+      <AuthorsListBlock :authors="authors" />
     </template>
   </div>
 </template>
 
 <style scoped>
-  .all-authors-container {
+  .all-authors-main-box {
     display: flex;
     flex-direction: column;
   }
@@ -38,76 +44,44 @@ const emit = defineEmits(['deleteAuthor'])
   .title-bar {
     display: flex;
     justify-content: space-between;
-    color: #7a7a7a;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
     margin-bottom: 20px;
   }
 
-  .title-bar p {
-    background-color: #fff4e9;
-    padding: 8px 20px 10px;
-  }
- 
-  .author-all-info-container {
+  .title-names-box {
     display: flex;
-    justify-content: space-between;
-    font-size: 18px;
-    font-weight: 700;
-  }
-
-  .author-container,
-  .database-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffcc8a;
-    box-shadow: 2px 4px 6px rgba(0, 0, 255, 0.3);
-    padding: 8px 20px 10px;
-    margin-bottom: 10px;
-  }
-
-  .author-container {
     justify-content: space-between;
     width: 100%;
   }
 
-  .author-container:hover {
-    background-color: #ffbf6a;
-    box-shadow: 2px 4px 6px rgba(0, 0, 255, 0.4);
+  .title-names-box p {
+    color: #7a7a7a;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: #fff4e9;
     padding: 8px 20px 10px;
   }
 
-  .author-name {
-    color: #424242;
-    margin-right: 40px;
-  }
-
-  .links-container {
+  .database-btn-box {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    width: 140px;
-  }
-
-  a {
-    color: #329f96;
-    font-size: 14px;
-    text-transform: uppercase;
-  }
-
-  .delete-link {
-    color: #e46464;
-    font-size: 20px;
-    margin-top: -4px;
-    cursor: pointer;
-  }
-
-  .database-container {
-    justify-content: center;
-    color: #424242;
-    width: 90px;
+    width: 97px;
     margin-left: 40px;
+  }
+
+  .database-btn-box button {
+    color: #5f5f5f;
+    font-size: 22px;
+    font-weight: 700;
+    background-color: #fff4e9;
+    padding: 0 8px;
+  }
+
+  .btn-active {
+    box-shadow: 2px 4px 6px rgba(51, 13, 35, 0.2);
+  }
+
+  .btn-inactive {
+    opacity: 0.8;
   }
 </style>

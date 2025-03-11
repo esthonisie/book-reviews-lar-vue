@@ -7,6 +7,7 @@ import axios from 'axios'
 
 // state
 const authors = ref([]);
+const isSortedByQuantityDesc = ref(false);
 
 // Axios
 export const requestGetAuthors = async () => {
@@ -20,6 +21,15 @@ export const requestGetAuthors = async () => {
 
 // getters
 export const getAuthors = computed(() => authors.value);
+export const getAuthorsByQuantityDesc = computed(() => 
+  JSON.parse(JSON.stringify(authors.value))
+  .sort((a, b) => b.books_count - a.books_count)
+);
+
+export const checkIsSorted = computed(() => isSortedByQuantityDesc.value);
+
+// actions
+export const updateIsSorted = (boolean) => isSortedByQuantityDesc.value = boolean;
 
 
 // -----------------------------------------------------------------------------
@@ -63,7 +73,7 @@ export const requestUpdateAuthor = async (firstName, lastName, id) => {
   }
 };
 
-export const requestDeletAuthor = async (id) => {
+export const requestDeleteAuthor = async (id) => {
   try {
       const response = await axios.delete(`/api/authors/${id}`);
       console.log(response.data);

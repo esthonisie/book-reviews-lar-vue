@@ -15,12 +15,9 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        $authors = Author::with('books')->get();
-        return AuthorResource::collection($authors)
-            ->sortBy('last_name')
-            ->values()
-            ->all()
-        ;
+        // $authors = Author::withCount('books')->with('books')->orderBy('books_count', 'desc')->get();
+        $authors = Author::withCount('books')->with('books')->orderBy('books_count')->get();
+        return AuthorResource::collection($authors);
     }
 
     /**
