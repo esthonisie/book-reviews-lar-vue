@@ -4,10 +4,6 @@ import { summary } from './summaryText'
 
 const isLoaded = defineModel('isLoaded');
 const book = defineModel('book');
-
-// const getImageUrl = (name) => {
-//   return new URL(`/public/img/${name}`, import.meta.url).href;
-// };
 </script>
 
 <template>
@@ -15,7 +11,6 @@ const book = defineModel('book');
     <div class="book-info-container">
       <p class="title">{{ book.title }}</p>
       <p class="author">{{ book.author?.name }}</p>
-      <!-- <img :src="getImageUrl(book?.cover_img)" class="book-cover" /> -->
       <img :src="`/img/${book?.cover_img}`" class="book-cover" />
       <div class="summary-container">
         <p>summary:</p>

@@ -7,6 +7,7 @@ const routes = [
   { 
     path: '/dashboard', 
     component: IndexView,
+    name: 'dashboard.index',
     children: [
       {
         path: '',

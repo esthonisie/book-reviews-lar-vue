@@ -1,5 +1,5 @@
 <script setup>
-import AuthorForm from '@/js/domains/authors/components/AuthorForm.vue'
+import AuthorCreateForm from '@/js/domains/authors/components/AuthorCreateForm.vue'
 
 const firstName = defineModel('firstName');
 const lastName = defineModel('lastName');
@@ -16,13 +16,9 @@ const bookTitle = defineModel('bookTitle');
       please submit the author's name first. Thank you.
     </p>
     <div class="forms-container">
-      <AuthorForm v-model:firstName="firstName" v-model:lastName="lastName" />
+      <AuthorCreateForm v-model:firstName="firstName" v-model:lastName="lastName" />
       <form @submit.prevent="submitBook">
         <label for="author">choose author:</label>
-        <!-- <input id="author" list="authors">
-        <datalist id="authors">
-          <option v-for="author in authors">{{ author.name }}</option>
-        </datalist> -->
         <select id="author" v-model="authorId">
           <option v-for="author in authors" :value="author.id">{{ author.name }}</option>
         </select>

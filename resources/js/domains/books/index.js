@@ -6,19 +6,23 @@ import ShowView from './views/ShowView.vue';
 const routes = [
   { 
     path: '/books', 
-    component: IndexView 
+    component: IndexView,
+    name: 'books.index', 
   },
   { 
     path: '/books/:id', 
-    component: ShowView 
+    component: ShowView,
+    name: 'book.show', 
   },
   { 
     path: '/books/create', 
-    component: CreateView 
+    component: CreateView,
+    name: 'book.create', 
   },
   { 
     path: '/books/edit/:id', 
-    component: EditView
+    component: EditView,
+    name: 'book.edit',
   },
 ];
 

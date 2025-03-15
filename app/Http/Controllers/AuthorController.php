@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+// use Illuminate\Http\Request;
 use App\Models\Author;
-use Illuminate\Http\Request;
 use App\Http\Resources\AuthorResource;
 use App\Http\Requests\StoreAuthorRequest;
 use App\Http\Requests\UpdateAuthorRequest;

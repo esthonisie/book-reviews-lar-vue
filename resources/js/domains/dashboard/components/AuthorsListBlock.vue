@@ -15,7 +15,9 @@ const deleteAuthor = inject('deleteAuthor');
     <div class="author-box">
       <p class="author-name">{{ author.name }}</p>
       <div class="links-box">
-        <RouterLink :to="`/authors/edit/${author.id}`">edit</RouterLink>
+        <RouterLink :to="{ name: 'author.edit', params: { id: `${author.id}` } }"> 
+          edit
+        </RouterLink>
         <p @click="deleteAuthor(author.id)" class="delete-link">x</p>
       </div>
     </div>

@@ -4,11 +4,13 @@ import EditView from './views/EditView.vue'
 const routes = [
   { 
     path: '/books/:id/reviews/create', 
-    component: CreateView 
+    component: CreateView,
+    name: 'review.create', 
   },
   { 
     path: '/reviews/edit/:id', 
-    component: EditView
+    component: EditView,
+    name: 'review.edit',
   },
 ];
 
