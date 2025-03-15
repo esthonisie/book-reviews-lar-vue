@@ -3,7 +3,9 @@ import { inject } from 'vue'
 import { RouterLink } from 'vue-router'
 
 // data
-const books = defineModel('books');
+defineProps({
+  books: Array,
+});
 
 // functions
 const deleteBook = inject('deleteBook');
@@ -16,7 +18,7 @@ const deleteBook = inject('deleteBook');
       <p class="title">{{ book.title }}</p>
       <p class="written-by">written by:</p>
       <p class="author">{{ book.author.name }}</p>
-      <RouterLink :to="`/books/${book.id}`">
+      <RouterLink :to="{ name: 'book.show', params: { id: `${book.id}` } }"> 
         &#8594; info &#38; reviews
       </RouterLink>
     </div>

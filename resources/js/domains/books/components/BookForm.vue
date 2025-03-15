@@ -1,12 +1,17 @@
 <script setup>
-import AuthorForm from '@/js/domains/authors/components/AuthorForm.vue'
+import AuthorCreateForm from '@/js/domains/authors/components/AuthorCreateForm.vue'
 
+// authorform data
 const firstName = defineModel('firstName');
 const lastName = defineModel('lastName');
 
-const authors = defineModel('authors');
+// bookform data
 const authorId = defineModel('authorId');
 const bookTitle = defineModel('bookTitle');
+
+defineProps({
+  authors: Array,
+});
 </script>
 
 <template>
@@ -16,13 +21,9 @@ const bookTitle = defineModel('bookTitle');
       please submit the author's name first. Thank you.
     </p>
     <div class="forms-container">
-      <AuthorForm v-model:firstName="firstName" v-model:lastName="lastName" />
+      <AuthorCreateForm v-model:firstName="firstName" v-model:lastName="lastName" />
       <form @submit.prevent="submitBook">
         <label for="author">choose author:</label>
-        <!-- <input id="author" list="authors">
-        <datalist id="authors">
-          <option v-for="author in authors">{{ author.name }}</option>
-        </datalist> -->
         <select id="author" v-model="authorId">
           <option v-for="author in authors" :value="author.id">{{ author.name }}</option>
         </select>
@@ -90,10 +91,6 @@ input:focus, select:focus {
 }
 
 input::placeholder {
-  color: #7a7a7a;
-}
-
-input::-ms-input-placeholder {
   color: #7a7a7a;
 }
 

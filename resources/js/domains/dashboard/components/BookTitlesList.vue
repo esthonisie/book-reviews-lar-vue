@@ -1,13 +1,15 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 
-const books = defineModel('books');
+defineProps({
+  books: Array,
+});
 </script>
 
 <template>
   <div class="all-titles-container">
     <template v-for="book in books" :key="book.id">
-      <RouterLink :to="`/books/edit/${book.id}`" class="title-container">
+      <RouterLink :to="{ name: 'book.edit', params: { id: `${book.id}` } }" class="title-container">
         <p class="title">{{ book.title }}</p>
         <p class="author">{{ book.author.name }}</p>
       </RouterLink>

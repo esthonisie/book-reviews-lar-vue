@@ -1,10 +1,12 @@
 <script setup>
 import AuthorsListBlock from './AuthorsListBlock.vue'
 
-const authors = defineModel('authors');
-const authorsByQuantityDesc = defineModel('authorsByQuantityDesc');
+defineProps({
+  authors: Array,
+  authorsByQuantityDesc: Array,
+  checkIsSorted: Boolean,
+});
 
-const checkIsSorted = defineModel('checkIsSorted');
 const emit = defineEmits(['updateIsSorted']);
 </script>
 

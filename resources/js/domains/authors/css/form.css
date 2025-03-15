@@ -1,25 +1,3 @@
-<script setup>
-import { inject } from 'vue'
-
-// data
-const firstName = defineModel('firstName');
-const lastName = defineModel('lastName');
-
-// functions
-const submitAuthor = inject('submitAuthor');
-</script>
-
-<template>
-  <form @submit.prevent="submitAuthor">
-    <label for="first_name">author's first name</label>
-    <input id="first_name" placeholder="e.g. Nicci or J.R.R." v-model="firstName">
-    <label for="last_name">author's last name:</label>
-    <input id="last_name" placeholder="e.g. French" v-model="lastName">
-    <button type="submit"><slot>submit</slot></button>
-  </form>
-</template>
-
-<style scoped>
 form {
   display: flex;
   flex-direction: column;
@@ -27,7 +5,6 @@ form {
   box-shadow: 2px 4px 6px rgba(0, 0, 255, 0.35);
   width: 240px;
   padding: 20px;
-  margin: 0 10px;
 }
 
 label {
@@ -55,10 +32,6 @@ input::placeholder {
   color: #7a7a7a;
 }
 
-input::-ms-input-placeholder {
-  color: #7a7a7a;
-}
-
 button {
   color: #329f96;
   background-color: #fff4e9;
@@ -74,4 +47,3 @@ a {
   color: #329f96;
   margin-left: 20px;
 }
-</style>

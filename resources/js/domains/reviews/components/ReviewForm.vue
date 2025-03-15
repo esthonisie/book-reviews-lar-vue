@@ -43,12 +43,6 @@ textarea:focus {
   outline: 1px solid #7ee1cf;
 }
 
-/* textarea::placeholder {
-} */
-
-/* textarea::-ms-input-placeholder {
-} */
-
 button {
   color: #329f96;
   background-color: #fff4e9;

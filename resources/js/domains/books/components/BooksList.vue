@@ -1,10 +1,12 @@
 <script setup>
 import BooksListBlock from './BooksListBlock.vue'
 
-const books = defineModel('books');
-const booksByAuthor = defineModel('booksByAuthor');
+defineProps({
+  books: Array,
+  booksByAuthor: Array,
+  checkIsSorted: Boolean,
+});
 
-const checkIsSorted = defineModel('checkIsSorted');
 const emit = defineEmits(['updateIsSorted']);
 </script>
 

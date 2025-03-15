@@ -43,7 +43,7 @@ const submitBook = async () => {
   const newBookTitle = bookTitle.value;
   if (newAuthorId && newBookTitle) {
     await requestPostBook(newAuthorId, newBookTitle);
-    router.push({ path: `/books` })
+    router.push({ name: 'books.index' })
   }
 };
 </script>

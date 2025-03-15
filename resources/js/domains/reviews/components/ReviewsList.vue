@@ -14,11 +14,13 @@ const deleteReview = inject('deleteReview');
     <p v-if="reviews.length === 0">
       There seem to be no reviews yet.<br />
       Would you like to share your thoughts about this book?<br />
-      &#8594; Leave a review <RouterLink :to="`/books/${bookId}/reviews/create`">here</RouterLink>
+      &#8594; Leave a review 
+      <RouterLink :to="{ name: 'review.create', params: { id: `${bookId}` } }">here</RouterLink>
     </p>
     <p v-else>
       Would you also like to share your thoughts about this book?<br />
-      &#8594; Leave a review <RouterLink :to="`/books/${bookId}/reviews/create`">here</RouterLink>
+      &#8594; Leave a review 
+      <RouterLink :to="{ name: 'review.create', params: { id: `${bookId}` } }">here</RouterLink>
     </p>
   </div>
   <template v-for="(review) in reviews" :key="review.id">
@@ -27,7 +29,7 @@ const deleteReview = inject('deleteReview');
       <p>somehuman2222 &#x2022; 16 august 2042</p>
       <div class="review-links-container">
         <RouterLink 
-          :to="`/reviews/edit/${review.id}`" 
+          :to="{ name: 'review.edit', params: { id: `${review.id}` } }"
           class="edit-review-link">edit
         </RouterLink>
         <p>|</p>

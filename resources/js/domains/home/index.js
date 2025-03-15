@@ -3,7 +3,8 @@ import IndexView from './views/IndexView.vue'
 const routes = [
   { 
     path: '/', 
-    component: IndexView 
+    component: IndexView,
+    name: 'home', 
   },
 ];
 

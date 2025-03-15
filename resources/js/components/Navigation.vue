@@ -7,19 +7,19 @@ import { RouterLink } from 'vue-router'
     <div class="nav-links-container">
       <RouterLink 
         active-class="active" 
-        to="/">Home
+        :to="{ name: 'home' }">Home
       </RouterLink>
       <RouterLink 
         active-class="active" 
-        to="/dashboard">Dashboard
+        :to="{ name: 'dashboard.main' }">Dashboard
       </RouterLink>
       <RouterLink 
         active-class="active" 
-        to="/books">View All Books
+        :to="{ name: 'books.index' }">View All Books
       </RouterLink>
       <RouterLink 
         active-class="active" 
-        to="/books/create">Add New Book
+        :to="{ name: 'book.create' }">Add New Book
       </RouterLink>
     </div>
   </nav>
