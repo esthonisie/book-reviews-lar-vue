@@ -6,6 +6,8 @@ const firstName = defineModel('firstName');
 const lastName = defineModel('lastName');
 
 // functions
+// TODO: ik vind de leesbaarheid met de provide en inject functies er niet beter op worden, waarom deze functie, die gedeclareerd 
+// is in CreateView.vue, niet op deze pagina declareren zodat je zonder provide en inject toekunt?
 const submitAuthor = inject('submitAuthor');
 </script>
 

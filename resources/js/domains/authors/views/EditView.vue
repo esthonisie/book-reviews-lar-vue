@@ -18,6 +18,7 @@ const lastName = ref();
 
 onMounted(async () => {
   await requestGetAuthor(authorId);
+  // TODO: deep copy van gehele auteursobject is makkelijker om mee te geven ipv losse velden
   const author = Object.assign({}, getAuthor.value);
   firstName.value = author.first_name;
   lastName.value = author.last_name;

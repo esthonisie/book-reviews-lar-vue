@@ -28,6 +28,7 @@ const emit = defineEmits(['updateIsSorted']);
         </button>
       </div>
     </div>
+    <!-- TODO: je kunt ook met 1 AuthorsListBlock toe, door de data vooraf op deze pagina in te laden adhv de checkIsSorted waarde -->
     <template v-if="checkIsSorted">
       <AuthorsListBlock :authors="authorsByQuantityDesc" />
     </template>

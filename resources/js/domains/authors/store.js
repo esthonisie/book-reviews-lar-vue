@@ -21,6 +21,7 @@ export const requestGetAuthors = async () => {
 
 // getters
 export const getAuthors = computed(() => authors.value);
+// TODO: (vraag) waarom een deep copy maken?
 export const getAuthorsByQuantityDesc = computed(() => 
   JSON.parse(JSON.stringify(authors.value))
   .sort((a, b) => b.books_count - a.books_count)
@@ -35,6 +36,8 @@ export const updateIsSorted = (boolean) => isSortedByQuantityDesc.value = boolea
 // -----------------------------------------------------------------------------
 // ------ SINGLE AUTHOR --------------------------------------------------------
 // -----------------------------------------------------------------------------
+
+// TODO: (vraag) waarom een tweede state met enkele auteur, als je deze ook uit het array met alle auteurs kunt ophalen?
 
 // state
 const author = ref();
